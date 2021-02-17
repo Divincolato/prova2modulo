@@ -7,6 +7,10 @@ package com.marconirovereto.quartainf.ca_provaberti;
 
 import com.marconirovereto.quartainf.ca_provaberti.fantacalcio.*;
 import static com.marconirovereto.quartainf.ca_provaberti.fantacalcio.Metodi.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -43,8 +47,32 @@ public class Program {
         System.out.println(squadra1.getFormazione());
         System.out.println("\n");
         System.out.println(squadra2.getFormazione());
+        //serializzazione oggetto
+        try {
+            FileOutputStream fileOut = new FileOutputStream("squadra.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(squadra1);
+            out.close();
+            System.out.println("squadra serializzata ciao giovanni");
+            
+        } catch (Exception e) {
+            System.out.println("Eccezione "+e.getMessage());
+        }
         
+        //deserializzazione oggetto
+        Squadra squadra3 = new Squadra();
+        try {
+            FileInputStream fileIn = new FileInputStream("squadra.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            squadra3 = (Squadra) in.readObject();
+            System.out.println("Squadra deserializzata correttamente spero ciao");
+        } catch (Exception e) {
+            
+            System.out.println("Eccezione "+e.getMessage());
+        }
         
+        System.out.println(squadra3.getFormazione());
+        System.out.println(squadra3.nomeSquadra);
     }
     
 }
