@@ -27,7 +27,7 @@ public class Program {
         Squadra squadra1 = new Squadra("Los Angeles Lakers");
         Squadra squadra2 = new Squadra("Miami Heat");
         
-        inserisciAllenatore("Mr.Ammuffito",squadra1);
+        inserisciAllenatore("Biagio Antonacci",squadra1);
         inserisciAllenatore("Amadeus", squadra2);
                 
         inserisciGiocatore("Gianni Morandi",1,squadra1);
@@ -38,22 +38,27 @@ public class Program {
         
         
         inserisciGiocatore("Raffaele Gradenigo",3,squadra2);
-        inserisciGiocatore("Jebediah Gocciole",18,squadra2);
-        inserisciGiocatore("Joe Salyn",44,squadra2);
-        inserisciGiocatore("Roo Steca",22,squadra2);
-        inserisciGiocatore("Belandi Gabibbo",69,squadra2);
+        inserisciGiocatore("Giovanni Salin",5,squadra2);
+        inserisciGiocatore("Fabrizio De Andrè",44,squadra2);
+        inserisciGiocatore("Lucio Battisti",22,squadra2);
+        inserisciGiocatore("Giovanni Salin II",55,squadra2);
 
-        
+        System.out.println("Formazione di squadra1");
         System.out.println(squadra1.getFormazione());
         System.out.println("\n");
+        
+        System.out.println("Formazione di squadra2");
         System.out.println(squadra2.getFormazione());
+        
+        System.out.println("\n");
         //serializzazione oggetto
+        System.out.println("Provo la serializzazione e deserializzazione di squadra1");
         try {
             FileOutputStream fileOut = new FileOutputStream("squadra.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(squadra1);
             out.close();
-            System.out.println("squadra serializzata ciao giovanni");
+            System.out.println("Squadra serializzata correttamente");
             
         } catch (Exception e) {
             System.out.println("Eccezione "+e.getMessage());
@@ -65,13 +70,13 @@ public class Program {
             FileInputStream fileIn = new FileInputStream("squadra.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             squadra3 = (Squadra) in.readObject();
-            System.out.println("Squadra deserializzata correttamente spero ciao");
+            System.out.println("Squadra deserializzata correttamente");
         } catch (Exception e) {
             
             System.out.println("Eccezione "+e.getMessage());
         }
         
-        System.out.println(squadra3.getFormazione());
+        System.out.println("Formazione della squadra passata dall'interfaccia serializable\n"+squadra3.getFormazione());
         System.out.println(squadra3.nomeSquadra);
     }
     
