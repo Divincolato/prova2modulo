@@ -41,7 +41,7 @@ public class Squadra implements Serializable{
     public String getFormazione(){
         String tmp="";
         tmp+="Formazione della squadra: \n"+nomeSquadra;
-        //tmp+="\n"+all.toString();
+        tmp+="\n"+all.toString();
         
         for (Giocatore giocatore : formazione) {
             

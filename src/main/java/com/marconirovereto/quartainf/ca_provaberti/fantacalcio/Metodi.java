@@ -16,6 +16,7 @@ public class Metodi {
     public static void creaSquadra(){
         
     }
+    
 
 
     public static void inserisciAllenatore(String nome, Squadra squadra){
