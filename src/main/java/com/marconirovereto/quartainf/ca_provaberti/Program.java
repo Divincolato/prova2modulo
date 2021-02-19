@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Scanner;
 
 /**
  *
@@ -22,6 +23,9 @@ public class Program {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
+            Scanner scan = new Scanner(System.in);
         
         
         Squadra squadra1 = new Squadra("Los Angeles Lakers");
@@ -53,8 +57,12 @@ public class Program {
         System.out.println("\n");
         //serializzazione oggetto
         System.out.println("Provo la serializzazione e deserializzazione di squadra1");
+        
         try {
-            FileOutputStream fileOut = new FileOutputStream("squadra.ser");
+            System.out.println("Inserisci il nome della squadra da salvare:");
+            String file = scan.next();
+            file+=".ser";
+            FileOutputStream fileOut = new FileOutputStream(file);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(squadra1);
             out.close();
@@ -67,6 +75,9 @@ public class Program {
         //deserializzazione oggetto
         Squadra squadra3 = new Squadra();
         try {
+            System.out.println("Inserisci il nome della squadra da caricare:");
+            String file = scan.next();
+            file+=".ser";
             FileInputStream fileIn = new FileInputStream("squadra.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             squadra3 = (Squadra) in.readObject();

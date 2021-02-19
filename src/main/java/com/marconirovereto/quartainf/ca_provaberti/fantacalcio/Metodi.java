@@ -6,13 +6,16 @@ package com.marconirovereto.quartainf.ca_provaberti.fantacalcio;
  * and open the template in the editor.
  */
 
-import com.marconirovereto.quartainf.ca_provaberti.fantacalcio.*;
 
 /**
  *
  * @author Nico
  */
 public class Metodi {
+    
+    public static void creaSquadra(){
+        
+    }
 
 
     public static void inserisciAllenatore(String nome, Squadra squadra){
